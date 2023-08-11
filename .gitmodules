@@ -1,0 +1,3 @@
+[submodule "go-dollar-quotation-api"]
+	path = go-dollar-quotation-api
+	url = https://github.com/ItaloG/go-dollar-quotation-api.git
