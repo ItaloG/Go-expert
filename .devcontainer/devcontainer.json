@@ -1,0 +1,31 @@
+{
+  "name": "Go",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "root",
+  "forwardPorts": [
+    8000,
+    8080
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "zsh"
+          },
+          "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+          }
+        }
+      },
+      "extensions": [
+		    "humao.rest-client",
+        "streetsidesoftware.code-spell-checker-portuguese-brazilian",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  }
+}
