@@ -8,6 +8,10 @@
     8000,
     8080
   ],
+  "appPort": [
+    8000,
+    8080
+  ],
   "customizations": {
     "vscode": {
       "settings": {
@@ -22,7 +26,7 @@
         }
       },
       "extensions": [
-		    "humao.rest-client",
+        "humao.rest-client",
         "streetsidesoftware.code-spell-checker-portuguese-brazilian",
         "streetsidesoftware.code-spell-checker"
       ]

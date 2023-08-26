@@ -1,19 +1,40 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/ItaloG/Go-expert/APIS/configs"
+	_ "github.com/ItaloG/Go-expert/APIS/docs"
 	"github.com/ItaloG/Go-expert/APIS/internal/entity"
 	"github.com/ItaloG/Go-expert/APIS/internal/infra/database"
 	"github.com/ItaloG/Go-expert/APIS/internal/infra/webserver/handlers"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/jwtauth"
+
+	httpSwagger "github.com/swaggo/http-swagger"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
+// @title           Go Expert API Example
+// @version         1.0
+// @description     Product API with auhtentication
+// @termsOfService  http://swagger.io/terms/
+
+// @contact.name   Italo Gabriel
+// @contact.url    http://www.example.com
+// @contact.email  italog03@gmail.com
+
+// @license.name   ItaloG License
+// @license.url    http://www.example.com
+
+// @host      localhost:8000
+// @BasePath  /
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
 func main() {
 	configs, err := configs.LoadConfig(".")
 	if err != nil {
@@ -28,10 +49,14 @@ func main() {
 	productHandler := handlers.NewProductHandler(productDB)
 
 	userDB := database.NewUser(db)
-	userHandler := handlers.NewUserHandler(userDB, configs.TokenAuth, configs.JWTExpiresIn)
+	userHandler := handlers.NewUserHandler(userDB)
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
+	r.Use(middleware.Recoverer)
+	r.Use(middleware.WithValue("jwt", configs.TokenAuth))
+	r.Use(middleware.WithValue("jwtExpiresIn", configs.JWTExpiresIn))
+	// r.Use(LoggerRequest)
 
 	r.Route("/products", func(r chi.Router) {
 		r.Use(jwtauth.Verifier(configs.TokenAuth))
@@ -46,5 +71,14 @@ func main() {
 	r.Post("/users", userHandler.CreateUser)
 	r.Post("/users/generate_token", userHandler.GetJWT)
 
+	r.Get("/docs/*", httpSwagger.Handler(httpSwagger.URL("http://localhost:8000/docs/doc.json")))
+
 	http.ListenAndServe(":8000", r)
+}
+
+func LoggerRequest(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Println(r.Method, r.URL.Path)
+		next.ServeHTTP(w, r)
+	})
 }
