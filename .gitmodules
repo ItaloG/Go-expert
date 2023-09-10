@@ -1,3 +1,6 @@
 [submodule "go-dollar-quotation-api"]
 	path = go-dollar-quotation-api
 	url = https://github.com/ItaloG/go-dollar-quotation-api.git
+[submodule "busca-cep-multthreading"]
+	path = go-busca-cep-multithreading
+	url = https://github.com/ItaloG/go-busca-cep-multithreading.git
