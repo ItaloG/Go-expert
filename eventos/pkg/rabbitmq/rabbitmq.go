@@ -34,8 +34,7 @@ func Consume(ch *amqp.Channel, out chan<- amqp.Delivery, queue string) error {
 }
 
 func Publish(ch *amqp.Channel, body string, exName string) error {
-	err := ch.PublishWithContext(
-		nil,
+	err := ch.Publish(
 		exName,
 		"",
 		false,
