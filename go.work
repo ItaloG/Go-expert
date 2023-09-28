@@ -6,4 +6,5 @@ use (
 	./eventos
 	./graphQL
 	./gRPC
+	./uploadS3
 )
