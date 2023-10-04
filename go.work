@@ -7,4 +7,5 @@ use (
 	./graphQL
 	./gRPC
 	./uploadS3
+	./CLI
 )
