@@ -1,3 +1,5 @@
+# REF github.com/spf13/cobra-cli
+
 go install github.com/spf13/cobra-cli@latest
 
 apt-get install sqlite3

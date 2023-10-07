@@ -1,4 +1,4 @@
-go 1.21.1
+go 1.21.2
 
 use (
 	./APIS
@@ -8,4 +8,5 @@ use (
 	./gRPC
 	./uploadS3
 	./CLI
+	./SQLC
 )
