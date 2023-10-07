@@ -18,12 +18,34 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		cmd.Help()
+		// name, _ := cmd.Flags().GetString("name")
+		// fmt.Println("category called with name: " + category)
+		// exits, _ := cmd.Flags().GetBool("exits")
+		// fmt.Println("category called with exists: " + fmt.Sprint(exits))
+		// id, _ := cmd.Flags().GetInt16("id")
+		// fmt.Println("category id: " + fmt.Sprint(id))
 	},
+	// PreRun: func(cmd *cobra.Command, args []string) {
+	// 	fmt.Println("Chamado antes do Run")
+	// },
+	// PostRun: func(cmd *cobra.Command, args []string) {
+	// 	fmt.Println("Chamado depois do Run")
+	// },
+	// RunE: func(cmd *cobra.Command, args []string) error {
+	// 	return fmt.Errorf("Ocorreu um erro")
+	// },
 }
+
+// var category string
 
 func init() {
 	rootCmd.AddCommand(categoryCmd)
+	// categoryCmd.PersistentFlags().String("name", "", "Name of the category")
+	// categoryCmd.Flags().StringP("name", "n", "Y", "Name of the category")
+	// categoryCmd.Flags().StringVarP(&category, "name", "n", "", "Name of the category")
+
+	// categoryCmd.Flags().BoolP("exits", "e", false, "Check if category exists")
+	// categoryCmd.Flags().Int16P("id", "i", 0, "ID of the category")
 
 	// Here you will define your flags and configuration settings.
 
