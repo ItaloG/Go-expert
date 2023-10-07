@@ -18,7 +18,7 @@ func NewCourse(db *sql.DB) *Course {
 	return &Course{db: db}
 }
 
-func (c *Course) Create(name string, description string, categoryID string) (*Course, error) {
+func (c *Course) Create(name, description, categoryID string) (*Course, error) {
 	id := uuid.New().String()
 	_, err := c.db.Exec("INSERT INTO courses (id, name, description, category_id) VALUES ($1, $2, $3, $4)",
 		id, name, description, categoryID)
@@ -42,8 +42,7 @@ func (c *Course) FindAll() ([]Course, error) {
 	courses := []Course{}
 	for rows.Next() {
 		var id, name, description, categoryID string
-		err := rows.Scan(&id, &name, &description, &categoryID)
-		if err != nil {
+		if err := rows.Scan(&id, &name, &description, &categoryID); err != nil {
 			return nil, err
 		}
 		courses = append(courses, Course{ID: id, Name: name, Description: description, CategoryID: categoryID})
@@ -52,8 +51,7 @@ func (c *Course) FindAll() ([]Course, error) {
 }
 
 func (c *Course) FindByCategoryID(categoryID string) ([]Course, error) {
-	rows, err := c.db.Query("SELECT id, name, description, category_id FROM courses WHERE category_id = $1",
-		categoryID)
+	rows, err := c.db.Query("SELECT id, name, description, category_id FROM courses WHERE category_id = $1", categoryID)
 	if err != nil {
 		return nil, err
 	}
@@ -61,11 +59,20 @@ func (c *Course) FindByCategoryID(categoryID string) ([]Course, error) {
 	courses := []Course{}
 	for rows.Next() {
 		var id, name, description, categoryID string
-		err := rows.Scan(&id, &name, &description, &categoryID)
-		if err != nil {
+		if err := rows.Scan(&id, &name, &description, &categoryID); err != nil {
 			return nil, err
 		}
 		courses = append(courses, Course{ID: id, Name: name, Description: description, CategoryID: categoryID})
 	}
 	return courses, nil
+}
+
+func (c *Course) Find(id string) (Course, error) {
+	var name, description, categoryID string
+	err := c.db.QueryRow("SELECT name, description, category_id FROM courses WHERE id = $1", id).
+		Scan(&name, &description, &categoryID)
+	if err != nil {
+		return Course{}, err
+	}
+	return Course{ID: id, Name: name, Description: description, CategoryID: categoryID}, nil
 }
