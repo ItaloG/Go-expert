@@ -9,4 +9,5 @@ use (
 	./uploadS3
 	./CLI
 	./SQLC
+	./UOW
 )
