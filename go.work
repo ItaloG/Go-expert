@@ -10,4 +10,5 @@ use (
 	./CLI
 	./SQLC
 	./UOW
+	./DI
 )
