@@ -16,10 +16,13 @@ func main() {
 	}
 
 	// Create a new product repository
-	repository := product.NewProductRepository(db)
+	// repository := product.NewProductRepository(db)
 
-	// Create a new product usecase
-	usecase := product.NewProductUseCase(repository)
+	// // Create a new product usecase
+	// usecase := product.NewProductUseCase(repository)
+
+	// with wire
+	usecase := NewUseCase(db)
 
 	product, err := usecase.GetProduct(1)
 	if err != nil {
