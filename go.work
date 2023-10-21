@@ -11,4 +11,5 @@ use (
 	./SQLC
 	./UOW
 	./DI
+	./Clean-Architecture
 )
