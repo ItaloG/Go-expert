@@ -15,6 +15,7 @@ import (
 	"github.com/ItaloG/Go-expert/Clean-Architecture/internal/infra/grpc/service"
 	"github.com/ItaloG/Go-expert/Clean-Architecture/internal/infra/web/webserver"
 	"github.com/ItaloG/Go-expert/Clean-Architecture/pkg/events"
+
 	"github.com/streadway/amqp"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -73,8 +74,9 @@ func main() {
 }
 
 func getRabbitMQChannel() *amqp.Channel {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@rabbitmq:5672/")
 	if err != nil {
+		println(err)
 		panic(err)
 	}
 	ch, err := conn.Channel()
