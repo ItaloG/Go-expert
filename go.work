@@ -2,7 +2,6 @@ go 1.21.2
 
 use (
 	./APIS
-	./go-busca-cep-multithreading
 	./eventos
 	./graphQL
 	./gRPC
