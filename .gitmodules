@@ -4,3 +4,6 @@
 [submodule "busca-cep-multthreading"]
 	path = go-busca-cep-multithreading
 	url = https://github.com/ItaloG/go-busca-cep-multithreading.git
+[submodule "go-clean-architecture"]
+	path = go-clean-architecture
+	url = https://github.com/ItaloG/go-clean-architecture.git
