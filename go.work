@@ -1,4 +1,4 @@
-go 1.21.2
+go 1.21.3
 
 use (
 	./APIS
@@ -11,4 +11,5 @@ use (
 	./UOW
 	./DI
 	./Clean-Architecture
+	./go-clean-architecture
 )
