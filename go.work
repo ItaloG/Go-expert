@@ -12,4 +12,5 @@ use (
 	./DI
 	./Clean-Architecture
 	./go-clean-architecture
+	./go-rate-limiter-challenge
 )
