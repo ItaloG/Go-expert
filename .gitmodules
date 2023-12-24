@@ -7,3 +7,6 @@
 [submodule "go-clean-architecture"]
 	path = go-clean-architecture
 	url = https://github.com/ItaloG/go-clean-architecture.git
+[submodule "go-rate-limiter-challenge"]
+	path = go-rate-limiter-challenge
+	url = https://github.com/ItaloG/go-rate-limiter-challenge.git
