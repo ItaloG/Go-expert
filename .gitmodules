@@ -10,3 +10,6 @@
 [submodule "go-rate-limiter-challenge"]
 	path = go-rate-limiter-challenge
 	url = https://github.com/ItaloG/go-rate-limiter-challenge.git
+[submodule "go-stress-test-challenge"]
+	path = go-stress-test-challenge
+	url = https://github.com/ItaloG/go-stress-test-challenge.git
