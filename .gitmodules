@@ -13,3 +13,6 @@
 [submodule "go-stress-test-challenge"]
 	path = go-stress-test-challenge
 	url = https://github.com/ItaloG/go-stress-test-challenge.git
+[submodule "go-weather-api"]
+	path = go-weather-api
+	url = https://github.com/ItaloG/go-weather-api.git
