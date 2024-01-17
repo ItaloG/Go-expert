@@ -14,4 +14,5 @@ use (
 	./go-clean-architecture
 	./go-rate-limiter-challenge
 	./go-stress-test-challenge
+	./go-weather-api
 )
