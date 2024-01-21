@@ -15,4 +15,5 @@ use (
 	./go-rate-limiter-challenge
 	./go-stress-test-challenge
 	./go-weather-api
+	./Open-Telemetry
 )
